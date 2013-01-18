@@ -1,0 +1,28 @@
+(Note: Upload to github in 2013 as an archival copy of old project; should be working but is unmaintained and full of old ideas)
+
+scmnote:
+
+	scmnote is short for Scheme Note, which is a concept I have about making 
+a pretty recursive lisp/scheme based music format.  The format should be easy to put simple things together by hand, and easy to parse in order to make a nice graphical interface.
+
+The basic idea is that a melody is either simply a note:
+
+	$ cat note.sn
+	c4
+
+or it is a list of notes:
+
+	$ cat simple.sn 
+	(c4 c# d d# e e# e## g ab a bb b c5)
+
+or it is a group of such constructions, combined in some way, such
+as being played simultaneously:
+
+	$ cat merger.sn
+	(sim 
+		(c4 c# d d# e e# e## g ab a bb b c5)
+		(e4 e# f# g g# a a# b c5 c# d d# e))
+
+Example files can be found in the 'examples' directory
+
+See the man page for more details

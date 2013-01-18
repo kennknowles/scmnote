@@ -1,0 +1,91 @@
+.\"
+.\" Man page for scmnote
+.\"
+.\" Copyright (c) 2002 by Kenneth Knowles <kknowles@uclink.berkeley.edu>
+
+.TH scmnote 1 "2002-9-19" "0.0.2"
+.SH NAME
+scmnote \- a scheme-like music system
+.SH SYNOPSIS
+.BR scmnote\ [OPTIONS]\ [FILE]
+.SH DESCRIPTION
+scmnote is a scheme-like music notation system.  It takes a text file, which
+is a representation of a song, loosely tied to a midi-like event structure,
+and outputs a corresponding midi file.
+.PP
+scmnote has a philosophy of reusable structures, and is much more high-level
+than midi.  It reverts to midi concepts only for instrument changes, and
+specifying different channels of midi (otherwise all instrument changes
+would affect the same channel).
+
+.SH OPTIONS
+scmnote supports the following options:
+.sp
+.nf
+   -h         --help             Print help and exit
+   -V         --version          Print version and exit
+   -oSTRING   --out-file=STRING  output file, INFILE.ns -> INFILE.mid
+   -s         --stdout           output to stdout (default=off)
+.fi
+
+.SH FILES
+The input file to scmnote must contain exactly one well-formed scheme
+expression.  It is assume that the entirety of the structure is 'quoted',
+so no quotation is necessary.
+.PP
+
+Here is a context free grammar
+(abbreviated with regular expressions) for scmnote, note that this grammar
+only contains those features which are implemented - expect the keyword
+section to grow:
+.PP
+
+SCMNOTE :=  CONSTRUCTION
+.PP
+
+CONSTRUCTION := NOTE
+            |   LIST
+.PP
+
+NOTE := [a-g][0-9] ( #* | b* ) o*
+.PP
+
+LIST := null
+    |   ( LIST_TAIL )
+    |   ( KEYWORD LIST_TAIL )
+.PP
+
+LIST_TAIL :=    CONSTRUCTION
+        |       CONSTRUCTION LIST_TAIL
+.PP
+
+KEYWORD :=  sim
+
+.PP
+
+The midi file that is output is a Format 1 midi file, and does not currently
+take advantage of the "Running Status" that midi uses to optimize for size.
+
+The description file consists of lines with the following format:
+
+.SH ENVIRONMENT
+Eventually, scmnote should take a look at an environment variable for
+default options (if it ever has useful options)
+
+.SH DIAGNOSTICS
+If scmnote gives you trouble, please email the developers, as it
+is a really dumb program with few (if any) useful error messages
+
+.SH BUGS
+As far as I know, scmnote is bug-free.  This of course means that it has
+hundreds and hundreds (despite the improbability considering how small it
+is).
+
+.SH AUTHOR
+All of scmnote to date was created by Kenn Knowles 
+<kknowles@uclink.berkeley.edu>
+
+.SH SEE ALSO
+The webpage for scmnote is http://kefka.frap.net/~kenn/scmnote.
+.br
+Also check out Kenn's other projects at http://kefka.frap.net/~kenn

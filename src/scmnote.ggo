@@ -1,0 +1,6 @@
+package "scmnote"
+version "0.0.2"
+purpose "A scheme music system."
+
+option	"out-file"		o	"output file, INFILE.ns -> INFILE.mid"	string	no
+option	"stdout"		s	"output to stdout"	flag	off

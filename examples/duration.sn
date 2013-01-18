@@ -1,0 +1,5 @@
+((tempo 60) 
+(channels 
+	((inst 43) (dur 2 7) e#5 e## g ab a bb b c5)
+	((inst 0) (dur 1 5) c3 c# d d# e f f#)))
+	

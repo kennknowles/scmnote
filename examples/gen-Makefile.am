@@ -1,0 +1,4 @@
+ls *.sn | sed 's/\.sn/.sn \\/' | sed 's/^/	/' > sn_filelist
+echo "	gen-Makefile.am" | cat sn_filelist - > filelist
+echo "dist_data_DATA = \\\
+" | cat - filelist

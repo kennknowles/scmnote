@@ -1,0 +1,26 @@
+support the following keywords/constructions:
+	map
+	interpolate
+	find-instrument
+	instrument-file
+	meta
+	tying notes
+	ignoring commas, so you can mark phrases
+	rank  - a keyword to specify 0-11 for pitch class + an octave
+			for 20th century types
+	absolute  - some such keyword so absolute midi pitches can be specified
+			- for things like drums or synths
+
+Figure out how to give some extensibility - it makes sense to me that
+since guile is being used, guile function calls should be allowed to
+permute the input... I don't know if the whole program should be moved into
+scheme, since the data structures are complex and guile's OO is unstable
+(in the rapidly-changing way - i could be wrong).
+But nevertheless, scheme functions to create new scmnote from other
+scmnote should be allowed.
+
+Make the debugging output multi-tiered so that additional -v -vv -vvv can
+expose more of it, because right now its crazy...
+
+perhaps -v NUM where 0 <= NUM < 128, and we can give ranges to types of output
+
